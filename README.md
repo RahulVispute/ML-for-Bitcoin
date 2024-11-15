@@ -40,21 +40,75 @@ Source: Yahoo Finance (BTC-USD).
 ---
 
 ## Preprocessing
-1. **ARIMA Model**:
-   - Log transformation and differencing for stationarity.
-   - Exponential Weighted Moving Average (EWMA) for trend analysis.
+The preprocessing phase ensures the data is clean, formatted, and suitable for model training and evaluation. Various techniques were applied to handle missing data, transform features, and prepare the dataset for analysis.
 
-2. **Random Forest and Gradient Boosting**:
-   - Forward filling for missing data.
-   - Feature engineering for date-based trends.
+### 1. ARIMA Model Preprocessing
+- **Feature Selection**:
+  - Selected the daily **closing prices** as the primary feature due to their stability and ability to represent market sentiment at the end of the trading day.
+- **Stationarity Transformation**:
+  - Applied **log transformation** to stabilize variance and mean over time.
+  - Used **differencing** (subtracting consecutive observations) to remove non-stationary trends.
+  - Conducted **Dickey-Fuller tests** to verify stationarity after preprocessing. Results confirmed stationarity after transformations.
+- **Trend Smoothing**:
+  - Calculated **7-day moving averages** to smooth short-term fluctuations and highlight longer-term trends.
+  - Applied **Exponential Weighted Moving Averages (EWMA)** with a 7-day half-life to emphasize recent data points.
+- **Data Segmentation**:
+  - Split the data into **training (80%)** and **testing (20%)** sets for model training and validation.
+
+### 2. Random Forest and Gradient Boosting Regressors Preprocessing
+- **Handling Missing Data**:
+  - Imputed missing values using **forward filling** to ensure continuity without introducing biases.
+- **Feature Engineering**:
+  - Retained the 'Date' column for chronological structuring but excluded it as a direct input to regression models.
+  - Engineered moving averages and volatility indices as additional predictors to capture market trends and fluctuations.
+- **Normalization**:
+  - Scaled features like **volume** to reduce the impact of outliers.
+- **Data Segmentation**:
+  - Similar to ARIMA preprocessing, the dataset was split into **training (80%)** and **testing (20%)** sets, preserving chronological order to reflect the time series nature.
 
 ---
 
 ## Data Exploration
-- Visualization of price trends over time to identify volatility and patterns.
-- Rolling averages and statistical tests like Dickey-Fuller for stationarity.
+The dataset was extensively analyzed to uncover patterns, trends, and anomalies, providing insights that guided preprocessing and model selection.
+
+### 1. Price Trend Visualization
+- **Line Plot**:
+  - Visualized Bitcoin's daily **closing prices** over time (2019–2024) using a line plot.
+  - Key Observations:
+    - High volatility with sharp rises and falls.
+    - Evidence of periodic cycles and abrupt price changes, typical of cryptocurrency markets.
+
+### 2. Log Transformation
+- Applied **log transformation** to the 'Close' price:
+  - Stabilized variance and mitigated the impact of extreme values.
+  - Improved stationarity and model performance.
+
+### 3. Rolling Statistics
+- **7-day Rolling Mean**:
+  - Smoothed time series data to highlight trends and minimize noise.
+  - Helped identify significant deviations in price movements.
+- **7-day Rolling Standard Deviation**:
+  - Measured volatility, showing variations in price stability over time.
+
+### 4. Stationarity Testing
+- Performed the **Augmented Dickey-Fuller (ADF) test** on both original and transformed data:
+  - Test Statistic (Original): -1.512605.
+  - Test Statistic (Transformed): -13.97091.
+  - Critical Values: Stationarity confirmed at the 1% significance level after transformation.
+
+### 5. Seasonal Decomposition
+- Decomposed the log-transformed series using the **Seasonal Decompose** method:
+  - Extracted **trend**, **seasonality**, and **residuals** components.
+  - Analyzed residuals for stationarity to ensure no systematic patterns remained.
+
+### 6. Correlation Analysis
+- Computed **Autocorrelation Function (ACF)** and **Partial Autocorrelation Function (PACF)**:
+  - **ACF**: Gradual decline in correlation, indicating lagging effects of prior values.
+  - **PACF**: Sharp cutoffs after a few lags, characteristic of autoregressive processes.
+  - Informed the choice of ARIMA parameters `(p=10, d=0, q=0)`.
 
 ---
+
 
 ## Models and Techniques
 ### 1. **ARIMA Model**
@@ -104,4 +158,3 @@ This project demonstrates the potential of machine learning and statistical meth
 
 ---
 
-Feel free to contribute or raise issues!
