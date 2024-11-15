@@ -155,6 +155,19 @@ This project demonstrates the potential of machine learning and statistical meth
 - [Investopedia: ARIMA Model](https://www.investopedia.com/terms/a/autoregressive-integrated-moving-average-arima.asp)
 - [Medium: Bitcoin Price Prediction with Random Forest](https://medium.com/analytics-vidhya/bitcoin-price-prediction-with-random-forest-and-technical-indicators-python-560800d6f3cd)
 - [ResearchGate: ARIMA Model Analysis](https://www.researchgate.net/publication/340566388_Bitcoin_Price_Prediction_using_ARIMA_Model)
+---
 
+## References
+
+1. [Python Graph Gallery](https://python-graph-gallery.com)
+2. [TechRxiv: Bitcoin Price Prediction Using ARIMA Model](https://www.techrxiv.org/users/662317/articles/675657-bitcoin-price-prediction-using-arima-model)
+3. [Papers with Code: Bitcoin Price Prediction (ARIMA)](https://cs.paperswithcode.com/paper/bitcoin-price-prediction-an-arima-approach)
+4. [Arxiv: Bitcoin Price Prediction](https://ar5iv.labs.arxiv.org/html/1904.05315)
+5. [MDPI Article: Bitcoin Price Analysis](https://www.mdpi.com/2306-5729/7/11/149)
+6. [ScienceDirect: Bitcoin Price Analysis](https://www.sciencedirect.com/science/article/pii/S266682702200055X)
+7. [GitHub Repository: Bitcoin Price Prediction](https://github.com/silverrainb/bitcoin-price-pred)
+8. [Medium: Bitcoin Price Prediction with Random Forest](https://medium.com/analytics-vidhya/bitcoin-price-prediction-with-random-forest-and-technical-indicators-python-560800d6f3cd)
+9. [Investopedia: ARIMA Model](https://www.investopedia.com/terms/a/autoregressive-integrated-moving-average-arima.asp)
+10. [ResearchGate: ARIMA Model Analysis](https://www.researchgate.net/publication/340566388_Bitcoin_Price_Prediction_using_ARIMA_Model)
 ---
 
